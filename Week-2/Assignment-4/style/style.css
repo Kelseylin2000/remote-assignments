@@ -1,0 +1,68 @@
+body{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main-nav{
+    background-color: rgb(237, 237, 237);
+}
+
+.main-nav ul{
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+.main-nav li{
+    padding: 0px 10px 0px;
+}
+
+.main-nav .main-logo{
+    margin-right: auto;
+}
+
+.welcome-mes{
+    background-color: rgb(206, 224, 245);
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-content{
+    width: 80%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.item-content{
+    background-color: rgb(130, 148, 162);
+    width: 49%;
+    height: 150px;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    display: flex;
+    justify-content: center;
+}
+
+.cta{
+    margin: 20px 0px;
+    border: 0px;
+    width: 150px;
+    height: 50px;
+    background-color: rgb(206, 224, 245);
+}
+
+.hidden{
+    display: none;
+}
