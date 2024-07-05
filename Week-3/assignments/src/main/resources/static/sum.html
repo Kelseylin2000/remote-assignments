@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum Page</title>
+    <script>
+        function sum(){
+
+            // Declare a XMLHttpRequest object
+            let sumRequest = new XMLHttpRequest();
+
+            // reaction after receiving the request
+            sumRequest.onreadystatechange = function(){
+                if(sumRequest.readyState === 4 && sumRequest.status === 200){
+                    let result = JSON.parse(sumRequest.responseText);
+                    document.getElementById('result').innerHTML = result;
+                }
+            }
+
+            // open and send the request
+            let number = document.getElementById("numInput").value;
+            sumRequest.open("GET", `/data?number=${number}`);
+            sumRequest.send();
+        }
+
+    </script>
+
+</head>
+<body>
+    <h1>Sum Calculator</h1>
+    <input type="number" id="numInput">
+    <button onclick="sum()">Sum</button>
+    <p id="result"></p>
+</body>
+</html>
+
+
+<!-- 
+    
+// Fetch API
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sum Page</title>
+    <script>
+        function fetchSum() {
+            const number = document.getElementById('numInput').value;
+            fetch(`http://localhost:3000/data?number=${number}`)
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    document.getElementById('result').textContent = `Result: ${data}`;
+                })
+                .catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+        }
+    </script>
+</head>
+<body>
+    <h1>Sum Calculator</h1>
+    <input type="number" id="numInput" placeholder="Enter a number">
+    <button onclick="fetchSum()">Calculate</button>
+    <p id="result"></p>
+</body>
+</html> 
+
+-->
