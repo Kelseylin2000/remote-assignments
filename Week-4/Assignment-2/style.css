@@ -1,0 +1,8 @@
+.productsDiv{
+    display: flex;
+}
+.productDiv{
+    background-color: blanchedalmond;
+    padding: 20px;
+    margin: auto;
+}

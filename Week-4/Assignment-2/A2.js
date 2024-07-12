@@ -5,6 +5,7 @@ function ajax(src, callback) {
 }
 function render(data) {
     let productsDiv = document.createElement("div");
+    productsDiv.className = "productsDiv";
 
     for(const product of data){
         let productDiv = document.createElement("div");
@@ -13,6 +14,7 @@ function render(data) {
         createAndAppendElement(productDiv, "p", product.price);
         createAndAppendElement(productDiv, "p", product.description);
 
+        productDiv.className = "productDiv";
         productsDiv.appendChild(productDiv);
     }
 
