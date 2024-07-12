@@ -18,12 +18,8 @@ import java.util.Optional;
 @Repository
 public class UserRepository {
 
-    private final JdbcTemplate jdbcTemplate;
-
     @Autowired
-    public UserRepository(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
+    private JdbcTemplate jdbcTemplate;
 
     public Optional<User> findByEmail(String email) {
         String query = "SELECT * FROM user WHERE email = ?";

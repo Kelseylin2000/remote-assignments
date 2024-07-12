@@ -14,36 +14,33 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UserController {
 
-    private final UserService userService;
-
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+    private UserService userService;
 
     @GetMapping("/")
     public String homePage() {
         return "homePage";
     }
 
-    @PostMapping("/user/signup")
-    public String signUp(@RequestParam String email, @RequestParam String password, Model model) {
-        boolean success = userService.signUp(email, password);
+    @PostMapping("/user")
+    public String signUp(@RequestParam String email, @RequestParam String password, @RequestParam String action, Model model) {
+        
+        boolean success = false;
+        String msg = "Invaild";
+
+        if(action.equals("signup")){
+            success = userService.signUp(email, password);
+            msg = "Sign up failed. The same email was registered before.";
+        }else if(action.equals("signin")){
+            success = userService.signIn(email, password);
+            msg = "Sign in failed. Invalid email or password, or user has not registered yet.";
+        }
+
         if(success){
             return "memberPage";
         }else{
-            model.addAttribute("msg", "The same email was registered before.");
+            model.addAttribute("msg", msg);
             return "homePage";
         }
     }
-
-    @PostMapping("/user/signin")
-    public String signIn(@RequestParam String email, @RequestParam String password, Model model) {
-        boolean success = userService.signIn(email, password);
-        if(success){
-            return "memberPage";
-        }else{
-            model.addAttribute("msg", "Invalid email or password, or user has not registered yet.");
-            return "homePage";
-        }    }
 }

@@ -10,12 +10,8 @@ import com.example.demo.repository.UserRepository;
 @Service
 public class UserService {
 
-    private final UserRepository userRepository;
-
     @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    private UserRepository userRepository;
 
     public boolean signUp(String email, String password) {
         Optional<User> user = userRepository.findByEmail(email);
